@@ -4,7 +4,7 @@ function NavBar() {
 
 
 return(
-    <div>Landing Page</div>
+    <div>Nav Bar</div>
 )
 
 
