@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import './App.css';
 
 import LandingPage from './components/LandingPage';
+import SubmitRecipe from "./components/SubmitRecipe";
 
 
 
@@ -41,6 +42,7 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/submitRecipe" element={<SubmitRecipe />} />
         </Routes>
       </RecipeContext.Provider>
 </div>
