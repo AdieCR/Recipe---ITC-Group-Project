@@ -1,5 +1,15 @@
 import React from "react";
+import {
+    NavLink,
+    BrowserRouter as Router,
+    Switch,
+    Link,
+    Routes,
+    Route,
+} from "react-router-dom";
+
 import LandingPage from "./LandingPage";
+import SubmitRecipe from "./SubmitRecipe";
 
 function NavBar() {
     return (
@@ -33,29 +43,24 @@ function NavBar() {
                             >
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                     <li class="nav-item">
-                                        <a
+                                        <Link
+                                            to="/"
                                             class="nav-link active"
-                                            aria-current="page"
-                                            href="#"
+                                            title="LandingPage"
                                         >
                                             <span class="home">Home</span>
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">
-                                            Domain
-                                        </a>
+                                        <Link
+                                            to="/SubmitRecipe"
+                                            class="nav-link"
+                                            title="SubmitRecipe"
+                                        >
+                                            Submit A Recipe
+                                        </Link>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">
-                                            Hosting
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">
-                                            Services
-                                        </a>
-                                    </li>
+
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">
                                             Contact
@@ -72,7 +77,14 @@ function NavBar() {
                         </div>
                     </nav>
                     <div class="mt-3 d-flex justify-content-center">
-                        <LandingPage/>
+                        {/* <LandingPage /> */}
+                        <Routes>
+                            <Route path="/" element={<LandingPage />} />
+                            <Route
+                                path="/submitRecipe"
+                                element={<SubmitRecipe />}
+                            />
+                        </Routes>
                     </div>
                 </div>
             </div>
