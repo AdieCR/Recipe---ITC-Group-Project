@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col, Alert, Navbar } from "react-bootstrap/";
 import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 
-function SubmitRecipe() {
+function MyCookBook() {
     return (
         <div class="container mt-3">
             <div class="mt-3 d-flex justify-content-center">
@@ -24,4 +24,4 @@ function SubmitRecipe() {
     );
 }
 
-export default SubmitRecipe;
+export default MyCookBook;

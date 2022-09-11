@@ -1,7 +1,20 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import {
+    NavLink,
+    BrowserRouter as Router,
+    Switch,
+    Link,
+    Routes,
+    Route,
+} from "react-router-dom";
 
+import LandingPage from "../src/components/LandingPage";
+import SubmitRecipe from "../src/components/SubmitRecipe";
 import NavBar from "./components/NavBar";
+import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
+import MyCookBook from "./components/MyCookBook";
 
 export const RecipeContext = React.createContext();
 
@@ -36,6 +49,13 @@ function App() {
                 }}
             >
                 <NavBar />
+                <Routes>
+                    <Route path="/" element={<LandingPage />} />
+                    <Route path="/submitRecipe" element={<SubmitRecipe />} />
+                    <Route path="/signIn" element={<SignIn />} />
+                    <Route path="/signUp" element={<SignUp />} />
+                    <Route path="/myCookBook" element={<MyCookBook />} />
+                </Routes>
             </RecipeContext.Provider>
         </div>
     );
