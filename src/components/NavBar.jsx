@@ -23,9 +23,7 @@ function NavBar() {
                                 height="50px"
                                 width="50px"
                             />
-                            <a class="navbar-brand name" href="#">
-                                Cloud<span class="go">Go</span>
-                            </a>
+                            <h1 className="title">Food <span className="titleBold">Hub</span></h1>
                             <button
                                 class="navbar-toggler"
                                 type="button"
