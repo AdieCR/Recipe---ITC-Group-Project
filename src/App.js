@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
-import LandingPage from "./components/LandingPage";
-import SubmitRecipe from "./components/SubmitRecipe";
 import NavBar from "./components/NavBar";
 
 export const RecipeContext = React.createContext();
@@ -39,10 +36,6 @@ function App() {
                 }}
             >
                 <NavBar />
-                {/* <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/submitRecipe" element={<SubmitRecipe />} />
-        </Routes> */}
             </RecipeContext.Provider>
         </div>
     );

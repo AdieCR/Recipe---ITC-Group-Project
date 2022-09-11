@@ -13,8 +13,8 @@ import SubmitRecipe from "./SubmitRecipe";
 
 function NavBar() {
     return (
-        <div class="container mt-3">
-            <div class="card card1 p-2">
+        // <div class="container mt-3">
+            // <div class="card card1 p-2">
                 <div class="innercard p-2">
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <div class="container-fluid">
@@ -87,8 +87,8 @@ function NavBar() {
                         </Routes>
                     </div>
                 </div>
-            </div>
-        </div>
+            // </div>
+        // </div>
     );
 }
 
