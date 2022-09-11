@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./NavBar.css"
 import Logo from "./Logo.png"
+import { RecipeContext } from "../Context/Context";
 import {
     NavLink,
     BrowserRouter as Router,
@@ -9,11 +10,11 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
-
+import Modal from "../Modal/Modal"
 function NavBar() {
+    const {modalShow, setModalShow} = useContext(RecipeContext)
     return (
-        // <div class="container mt-3">
-        // <div class="card card1 p-2">
+        
         <div class="">
             <nav class="navbar navbar-expand-lg navbar-light ">
                 <div class="container-fluid NavBarContainer">
@@ -71,17 +72,15 @@ function NavBar() {
                             </li>
                         </ul>
 
-                        <Link to="/signIn" class="nav-link" title="SignIn">
-                            <div class="btn btn-dark"> Sign in</div>
-                        </Link>
+                        
+                            <div class="btn btn-dark SignInBtn" onClick={() => setModalShow(true)}> Sign in</div>
+                            <Modal show={modalShow} onHide={()=> setModalShow(false)}/>
                     </div>
                     </div>
                 </div>
             </nav>
             <div class="mt-3 d-flex justify-content-center"></div>
         </div>
-        // </div>
-        // </div>
     );
 }
 
