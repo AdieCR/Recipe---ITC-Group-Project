@@ -1,34 +1,35 @@
 import React from "react";
+import "./LandingPage.css"
 
 function LandingPage() {
     return (
-        <div class="container mt-3">
-            <div class="mt-3 d-flex justify-content-center">
-                <span class="heading">Fast & Secure</span>
+        <div className="LandingPageContainer">
+            <div className="d-flex justify-content-left LandingPageContent">
+                <div className="heading titleBold">It is even better than</div>
+                <div className="heading titleBold">an expensive CookBook</div>
             </div>
-            <div class="d-flex justify-content-center">
-                <span class="text">best web hosting</span>
-            </div>
-            <div class="mt-3 d-flex justify-content-center">
-                <span class="text1">
-                    Extremly fast & secure website hosting Word Press
-                    <br />
-                    Theme.We offer Best Web hosting & Domain.
+            {/* <div className="d-flex justify-content-center">
+                <span className="text titleBold">an expensive CookBook</span>
+            </div> */}
+            <div className="d-flex justify-content-left">
+                <span className="text1 LandingPageSmallText">
+                    Learn how to make your favorite restaurant's dishes
+                    
                 </span>
             </div>
-            <div class=" mt-3 d-flex justify-content-center gap-3">
-                <div class="btn btn-success">Get Started</div>
-                <div class="btn1">
-                    <div class="d-flex flex-row align-items-center justify-content-center gap-1 buttonitems">
-                        <i class="fa fa-play-circle-o fs-3 mt-1"></i>
+            <div className=" mt-3 d-flex justify-content-center gap-3">
+                <div className="btn btn-success">Get Started</div>
+                <div className="btn1">
+                    <div className="d-flex flex-row align-items-center justify-content-center gap-1 buttonitems">
+                        <i className="fa fa-play-circle-o fs-3 mt-1"></i>
                         Play Video
                     </div>
                 </div>
             </div>
-            <div class="row mt-3 p-2 g-3 d-flex justify-content-center">
-                <div class="col-md-4">
-                    <div class="card2 p-2 py-3">
-                        <div class="text-center d-flex flex-column align-items-center">
+            <div className="row mt-5 p-3 g-3 d-flex justify-content-center">
+                <div className="col-md-4">
+                    <div className="card2 p-2 py-3">
+                        <div className="text-center d-flex flex-column align-items-center">
                             <div>
                                 <img
                                     src="https://i.imgur.com/YzEqP6e.png"
@@ -36,21 +37,21 @@ function LandingPage() {
                                     width="50px"
                                 />
                             </div>
-                            <span class="stellar">Stellar</span>
-                            <span class="hosting">Shared Hosting</span>
-                            <span class="price mt-2">
+                            <span className="stellar">Stellar</span>
+                            <span className="hosting">Shared Hosting</span>
+                            <span className="price mt-2">
                                 $ 0.99<span class="small"> /mo</span>
                             </span>
-                            <span class="year">On first year</span>
-                            <button class="btn btn-success mt-2">
+                            <span className="year">On first year</span>
+                            <button className="btn btn-success mt-2">
                                 Get Started
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card2 p-2 py-3">
-                        <div class="text-center d-flex flex-column align-items-center">
+                <div className="col-md-4">
+                    <div className="card2 p-2 py-3">
+                        <div className="text-center d-flex flex-column align-items-center">
                             <div>
                                 <img
                                     src="https://i.imgur.com/f4B2c2B.png"
@@ -58,21 +59,21 @@ function LandingPage() {
                                     width="50px"
                                 />
                             </div>
-                            <span class="stellar">Stellar Pro</span>
-                            <span class="hosting">Shared Hosting</span>
-                            <span class="price mt-2">
+                            <span className="stellar">Stellar Pro</span>
+                            <span className="hosting">Shared Hosting</span>
+                            <span className="price mt-2">
                                 $ 0.99<span class="small"> /mo</span>
                             </span>
-                            <span class="year">On first year</span>
-                            <button class="btn2 btn-success mt-2">
+                            <span className="year">On first year</span>
+                            <button className="btn2 btn-success mt-2">
                                 Get Started
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card2 p-2 py-3">
-                        <div class="text-center d-flex flex-column align-items-center">
+                <div className="col-md-4">
+                    <div className="card2 p-2 py-3">
+                        <div className="text-center d-flex flex-column align-items-center">
                             <div>
                                 <img
                                     src=" https://i.imgur.com/C4CUnKG.png"
@@ -80,13 +81,13 @@ function LandingPage() {
                                     width="50px"
                                 />
                             </div>
-                            <span class="stellar">Pro Business</span>
-                            <span class="hosting">Shared Hosting</span>
-                            <span class="price mt-2">
+                            <span className="stellar">Pro Business</span>
+                            <span className="hosting">Shared Hosting</span>
+                            <span className="price mt-2">
                                 $ 0.99<span class="small"> /mo</span>
                             </span>
-                            <span class="year">On first year</span>
-                            <button class="btn3 btn-success mt-2">
+                            <span className="year">On first year</span>
+                            <button className="btn3 btn-success mt-2">
                                 Get Started
                             </button>
                         </div>

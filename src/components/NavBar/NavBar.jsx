@@ -1,4 +1,6 @@
 import React from "react";
+import "./NavBar.css"
+import Logo from "./Logo.png"
 import {
     NavLink,
     BrowserRouter as Router,
@@ -12,19 +14,20 @@ function NavBar() {
     return (
         // <div class="container mt-3">
         // <div class="card card1 p-2">
-        <div class="innercard p-2">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container-fluid">
+        <div class="">
+            <nav class="navbar navbar-expand-lg navbar-light ">
+                <div class="container-fluid NavBarContainer">
+                    <div className="AlignCenter">
                     <img
-                        src="https://i.imgur.com/hSDDP67.png"
-                        height="50px"
-                        width="50px"
+                        src={Logo}
+                        height="80px"
+                        width="80px"
                     />
-                    <a class="navbar-brand name" href="#">
-                        Cloud<span class="go">Go</span>
-                    </a>
+                    <div className="title">Food <span className="titleBold">Hub</span></div>
+                    </div>
+                    <div>
                     <button
-                        class="navbar-toggler"
+                        className="navbar-toggler"
                         type="button"
                         data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent"
@@ -32,26 +35,26 @@ function NavBar() {
                         aria-expanded="false"
                         aria-label="Toggle navigation"
                     >
-                        <span class="navbar-toggler-icon"></span>
+                        <span className="navbar-toggler-icon"></span>
                     </button>
                     <div
-                        class="collapse navbar-collapse"
+                        className="collapse navbar-collapse"
                         id="navbarSupportedContent"
                     >
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
                                 <Link
                                     to="/"
                                     class="nav-link active"
                                     title="LandingPage"
                                 >
-                                    <span class="home">Home</span>
+                                    <span class="home NavBarItem">Home</span>
                                 </Link>
                             </li>
                             <li class="nav-item">
                                 <Link
                                     to="/SubmitRecipe"
-                                    class="nav-link"
+                                    class="nav-link NavBarItem"
                                     title="SubmitRecipe"
                                 >
                                     Submit A Recipe
@@ -60,7 +63,7 @@ function NavBar() {
                             <li class="nav-item">
                                 <Link
                                     to="/MyCookBook"
-                                    class="nav-link"
+                                    class="nav-link NavBarItem"
                                     title="MyCookBook"
                                 >
                                     My CookBook
@@ -71,6 +74,7 @@ function NavBar() {
                         <Link to="/signIn" class="nav-link" title="SignIn">
                             <div class="btn btn-dark"> Sign in</div>
                         </Link>
+                    </div>
                     </div>
                 </div>
             </nav>

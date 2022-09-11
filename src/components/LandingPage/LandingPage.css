@@ -1,0 +1,26 @@
+body{
+    background-color: #fff;
+    
+}
+.LandingPageContainer{
+    background-image: url("https://img.freepik.com/free-photo/authentic-italian-pasta_24972-886.jpg?w=1060&t=st=1662906384~exp=1662906984~hmac=ce9e4f5717f6a8a0c465dd9f99096268c6e03fbd6bc934ebe03ec0896f8d87cf");
+    background-size: cover;
+    height:70vh;
+    width:100vw;
+    position: absolute;
+    top:0;
+    z-index: -1;
+
+}
+.LandingPageContent{
+    margin-top:20%;
+    color:#fff;
+    display: flex;
+    flex-direction: column;
+    margin-left:10%;
+}
+.LandingPageSmallText{
+    color:#fff;
+    font-size: 1.2em;
+    margin-left:10%
+}
