@@ -8,8 +8,8 @@ import {
     Route,
 } from "react-router-dom";
 
-import LandingPage from "./LandingPage/LandingPage";
-import SubmitRecipe from "./SubmitRecipe/SubmitRecipe";
+import LandingPage from "../LandingPage/LandingPage.jsx";
+import SubmitRecipe from "../SubmitRecipe/SubmitRecipe.jsx";
 
 function NavBar() {
     return (

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-import NavBar from "./components/NavBar";
+import NavBar from "./components/NavBar/NavBar";
 
 export const RecipeContext = React.createContext();
 
