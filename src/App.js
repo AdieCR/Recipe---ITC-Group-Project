@@ -9,12 +9,12 @@ import {
     Route,
 } from "react-router-dom";
 
-import LandingPage from "../src/components/LandingPage";
-import SubmitRecipe from "../src/components/SubmitRecipe";
-import NavBar from "./components/NavBar";
-import SignIn from "./components/SignIn";
-import SignUp from "./components/SignUp";
-import MyCookBook from "./components/MyCookBook";
+import LandingPage from "./components/LandingPage/LandingPage";
+import SubmitRecipe from "./components/SubmitRecipe/SubmitRecipe";
+import NavBar from "./components/NavBar/NavBar";
+import SignIn from "./components/SignIn/SignIn";
+import SignUp from "./components/SignUp/SignUp";
+import MyCookBook from "./components/MyCookBook/MyCookBook";
 
 export const RecipeContext = React.createContext();
 
