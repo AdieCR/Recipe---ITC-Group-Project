@@ -8,23 +8,20 @@ function LandingPage() {
                 <div className="heading titleBold">It is even better than</div>
                 <div className="heading titleBold">an expensive CookBook</div>
             </div>
-            {/* <div className="d-flex justify-content-center">
-                <span className="text titleBold">an expensive CookBook</span>
-            </div> */}
             <div className="d-flex justify-content-left">
                 <span className="text1 LandingPageSmallText">
                     Learn how to make your favorite restaurant's dishes
                     
                 </span>
             </div>
-            <div className=" mt-3 d-flex justify-content-center gap-3">
-                <div className="btn btn-success">Get Started</div>
-                <div className="btn1">
-                    <div className="d-flex flex-row align-items-center justify-content-center gap-1 buttonitems">
-                        <i className="fa fa-play-circle-o fs-3 mt-1"></i>
-                        Play Video
-                    </div>
-                </div>
+            <div className="d-flex justify-content-left gap-3 LandingPageSearch">
+                <input className="LandingPageInput" placeholder="I want to make..."></input>
+                {/* <div className="btn1"> */}
+                    <select className="d-flex flex-row align-items-center justify-content-center gap-1 buttonitems LandingPageCategory">
+                        {/* <i className="fa fa-play-circle-o fs-3 mt-1"></i> */}
+                        Categories
+                    </select>
+                {/* </div> */}
             </div>
             <div className="row mt-5 p-3 g-3 d-flex justify-content-center">
                 <div className="col-md-4">
