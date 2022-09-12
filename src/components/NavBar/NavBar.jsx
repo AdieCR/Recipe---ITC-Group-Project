@@ -2,17 +2,31 @@ import React, { useContext } from "react";
 import "./NavBar.css"
 // import Logo from "./Logo.URL"
 import { RecipeContext } from "../Context/Context";
+import axios from 'axios'
 import {
     // NavLink,
     // BrowserRouter as Router,
     // Switch,
     Link,
+    useNavigate,
     // Routes,
     // Route,
 } from "react-router-dom";
 import Modal from "../Modal/Modal"
 function NavBar() {
-    const {modalShow, setModalShow} = useContext(RecipeContext)
+    const navigate = useNavigate()
+    const {modalShow, setModalShow, setCurrentUser, setIsLoggedIn, isLoggedIn} = useContext(RecipeContext)
+
+    async function signOut(){
+        setCurrentUser({});
+        setIsLoggedIn(false);
+        const signedOut = await axios.post('http://localhost:5000/user/signout', {withCredentials:true});
+        if (signedOut.data.ok){
+            navigate("/")
+        }
+    }
+
+
     return (
         
         <div>
@@ -73,9 +87,11 @@ function NavBar() {
                             </li>
                         </ul>
 
-                        
-                            <div className="btn btn-dark SignInBtn" onClick={() => setModalShow(true)}> Sign in</div>
-                            <Modal show={modalShow} onHide={()=> setModalShow(false)}/>
+                            {!isLoggedIn ? (<><div className="btn btn-dark SignInBtn" onClick={() => setModalShow(true)}> Sign in</div>
+                            <Modal show={modalShow} onHide={()=> setModalShow(false)}/></>): (
+                                <div className="btn btn-dark SignInBtn" onClick={signOut}> Sign Out</div>
+                            ) }
+                            
                     </div>
                     </div>
                 </div>

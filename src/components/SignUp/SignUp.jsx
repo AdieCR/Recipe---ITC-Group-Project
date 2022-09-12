@@ -18,7 +18,7 @@ export default function SignUp() {
   const [isLoading, setIsLoading] = useState(true)
   const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
   const [error,setError] = useState([]);
-  const {currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn} = useContext(RecipeContext)
+  const {setCurrentUser, setIsLoggedIn} = useContext(RecipeContext)
   function clearError(){
     setIsLoading(true);
     setError([]);
@@ -71,8 +71,9 @@ async function toSignUp(e){
       console.log(user)
       setModalShow(false)
       if (user.data.ok){
+        setIsLoggedIn(true)
         const {data} = await axios.get('http://localhost:5000/user/id', {withCredentials:true})
-        console.log(data)
+        setCurrentUser(data)
       }
     }catch(err){
         tempError.push(err);

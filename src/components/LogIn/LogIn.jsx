@@ -6,7 +6,7 @@ import axios from 'axios'
 
 export default function LogIn() {
   const {switchToSignUp} = useContext(RegisterContext)
-    const {setModalShow} = useContext(RecipeContext)
+    const {setModalShow,setIsLoggedIn, setCurrentUser} = useContext(RecipeContext)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [isLoading, setIsLoading] = useState(true)
@@ -39,8 +39,9 @@ export default function LogIn() {
         const user = await axios.post('http://localhost:5000/user/login', newUser,{withCredentials:true})
         setModalShow(false)
         if (user.data.ok){
+          setIsLoggedIn(true)
           const {data} = await axios.get('http://localhost:5000/user/id', {withCredentials:true})
-        
+          setCurrentUser(data)
         }
       }catch(err){
           error.push(err);
