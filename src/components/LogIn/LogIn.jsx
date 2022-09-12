@@ -1,10 +1,12 @@
 import React, {useState, useContext} from 'react' 
 import './LogIn.css'
 import {RegisterContext} from '../Context/RegisterContext';
+import { RecipeContext } from '../Context/Context';
 import axios from 'axios'
 
 export default function LogIn() {
-
+  const {switchToSignUp} = useContext(RegisterContext)
+    const {setModalShow} = useContext(RecipeContext)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [isLoading, setIsLoading] = useState(true)
@@ -28,22 +30,25 @@ export default function LogIn() {
   if (!password) {
     error.push('Password is required');
     setIsLoading(false);
+  }
     try{
         const newUser = {
           email: email,
           password: password,          
         }
         const user = await axios.post('http://localhost:5000/user/login', newUser)
+        setModalShow(false)
         if (user.data.ok){
-          const {data} = await axios.get('http://localhost:5000/user/id', {withCredentials:true})
+          const {data} = await axios.get('/user/id', {withCredentials:true})
+        
         }
       }catch(err){
           error.push(err);
       }
  }
-}
 
-    const {switchToSignUp} = useContext(RegisterContext)
+
+  
 return(
     <form className="boxContainerLog" onSubmit={handleSubmitLogin}>
         <div className="formContainer">

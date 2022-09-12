@@ -15,7 +15,7 @@ function NavBar() {
     const {modalShow, setModalShow} = useContext(RecipeContext)
     return (
         
-        <div className="">
+        <div>
             <nav className="navbar navbar-expand-lg navbar-light ">
                 <div className="container-fluid NavBarContainer">
                     <div className="AlignCenter">

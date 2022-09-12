@@ -7,6 +7,9 @@ import axios from 'axios'
 
 
 export default function SignUp() {
+  
+  const {switchToLogIn} = useContext(RegisterContext)
+  const {setModalShow} = useContext(RecipeContext)
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("")
@@ -65,8 +68,11 @@ async function toSignUp(e){
         
       }
       const user = await axios.post('http://localhost:5000/user/signup', newUser)
+      console.log(user)
+      setModalShow(false)
       if (user.data.ok){
         const {data} = await axios.get('http://localhost:5000/user/id', {withCredentials:true})
+        console.log(data)
       }
     }catch(err){
         tempError.push(err);
@@ -75,7 +81,7 @@ async function toSignUp(e){
 
 
 
-const {switchToLogIn} = useContext(RegisterContext)
+
   return (
     <form className="boxContainerLog" onSubmit={toSignUp}>
         <div className="formContainer">
