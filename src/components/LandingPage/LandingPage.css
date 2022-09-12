@@ -55,6 +55,7 @@ body{
     height: 50px;
     background: transparent;
     color: #fff;
+    margin-right: 15px;
  }
  .LandingPageCards{
     position: absolute;

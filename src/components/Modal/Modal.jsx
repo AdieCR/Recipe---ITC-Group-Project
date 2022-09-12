@@ -1,9 +1,21 @@
-// import Button from 'react-bootstrap/Button';
+import React , {useState} from 'react';
 import Modal from 'react-bootstrap/Modal';
-import SignUp from '../SignUp/SignUp'
+import SignUp from '../SignUp/SignUp';
+import LogIn from '../LogIn/LogIn';
+import {RegisterContext} from "../Context/RegisterContext"
 
 export default function ModalRecipe(props) {
+    const [formInModal, setFormInModal] = useState("signUp");
+    const switchToSignUp = ()=>{
+        setFormInModal("signUp");
+    }
+    const switchToLogIn = ()=>{
+        setFormInModal("LogIn");
+    }
+
+    const contextValue = {switchToLogIn, switchToSignUp};
   return (
+    <RegisterContext.Provider value={contextValue}>
     <Modal
       {...props}
       size="lg"
@@ -16,18 +28,12 @@ export default function ModalRecipe(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {/* <h4>Centered Modal</h4>
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
-        </p> */}
-        <SignUp/>
+      {formInModal === "signUp" && <SignUp />}
+      {formInModal === "LogIn" && <LogIn />}
       </Modal.Body>
-      {/* <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer> */}
+      
     </Modal>
+    </RegisterContext.Provider>
   );
 }
 

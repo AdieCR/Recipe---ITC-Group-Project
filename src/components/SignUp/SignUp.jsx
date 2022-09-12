@@ -1,6 +1,7 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import './SignUp.css'
-// import { AccountContext } from '../ModalContext/AccountContext'
+import {RecipeContext } from '../Context/Context'
+import { RegisterContext } from '../Context/RegisterContext'
 import axios from 'axios'
 
 
@@ -11,11 +12,10 @@ export default function SignUp() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [passwordConfirm, setPasswordConfirm] = useState("")
-  const [phone, setPhone] = useState("")
   const [isLoading, setIsLoading] = useState(true)
   const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
   const [error,setError] = useState([]);
-
+  const {currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn} = useContext(RecipeContext)
   function clearError(){
     setIsLoading(true);
     setError([]);
@@ -41,10 +41,7 @@ async function toSignUp(e){
       tempError.push('Email is invalid');
       setIsLoading(false);
     }
-    if (!phone) {
-      tempError.push('Phone # is required');
-      setIsLoading(false);
-    }
+
     if (!password) {
       tempError.push('Password is required');
       setIsLoading(false);
@@ -65,32 +62,32 @@ async function toSignUp(e){
         email: email,
         password: password,
         repassword: passwordConfirm,
-        phone: phone,
+        
       }
-      const user = axios.post('http://localhost:5000/user/signup', newUser)
-      console.log(user.data)
+      const user = await axios.post('http://localhost:5000/user/signup', newUser)
+      if (user.data.ok){
+        const {data} = await axios.get('http://localhost:5000/user/id', {withCredentials:true})
+      }
     }catch(err){
         tempError.push(err);
-        console.log(err)
     }
 }}
 
 
 
- 
+const {switchToLogIn} = useContext(RegisterContext)
   return (
-    <form className="boxContainerLog" onSubmit={()=>toSignUp}>
+    <form className="boxContainerLog" onSubmit={toSignUp}>
         <div className="formContainer">
             <input type='text' className="input" placeholder='First Name'onChange={e=>setFirstName(e.target.value)} required onClick={clearError}></input>
             <input type='text' className="input" placeholder='Last Name'onChange={e=>setLastName(e.target.value)}  required onClick={clearError}></input>
             <input type='email' className="input" placeholder='Email'onChange={e=>setEmail(e.target.value)}  required onClick={clearError}></input>
-            <input type='telephone' className="input" placeholder='Phone #'onChange={e=>setPhone(e.target.value)}  required onClick={clearError}></input>
             <input type='password' className="input" placeholder='Password'onChange={e=>setPassword(e.target.value)}  required onClick={clearError}></input>
             <input type='password' className="input" placeholder='Confirm Password'onChange={e=>setPasswordConfirm(e.target.value)} required onClick={clearError}></input>
             <div className="marginer"></div>
             <button  className='submitButton' type='submit' >Sign Up</button>
             <div className="marginer"></div>
-            <div className='s'>Already have an account? <span className='bold' >Log in</span></div>
+            <div className='s'>Already have an account? <span className='bold' onClick={switchToLogIn}>Log in</span></div>
             <div className="warning">
             {isLoading? (null): (error[0])}
               </div>
