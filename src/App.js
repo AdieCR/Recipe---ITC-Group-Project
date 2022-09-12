@@ -1,10 +1,10 @@
 import React, { useState, useEffect} from "react";
 import "./App.css";
 import {
-    NavLink,
-    BrowserRouter as Router,
-    Switch,
-    Link,
+    // NavLink,
+    // BrowserRouter as Router,
+    // Switch,
+    // Link,
     Routes,
     Route,
 } from "react-router-dom";

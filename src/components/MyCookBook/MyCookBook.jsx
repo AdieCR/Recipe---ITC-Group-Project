@@ -1,18 +1,18 @@
 import React from "react";
-import { Container, Row, Col, Alert, Navbar } from "react-bootstrap/";
-import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
+// import { Container, Row, Col, Alert, Navbar } from "react-bootstrap/";
+// import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 
 function MyCookBook() {
     return (
-        <div class="container mt-3">
-            <div class="mt-3 d-flex justify-content-center">
-                <span class="heading">Recipe!</span>
+        <div className="container mt-3">
+            <div className="mt-3 d-flex justify-content-center">
+                <span className="heading">Recipe!</span>
             </div>
-            <div class="d-flex justify-content-center">
-                <span class="text">Hey, nice to see you</span>
+            <div className="d-flex justify-content-center">
+                <span className="text">Hey, nice to see you</span>
             </div>
-            <div class="mt-3 d-flex justify-content-center">
-                <span class="text1">
+            <div className="mt-3 d-flex justify-content-center">
+                <span className="text1">
                     We are looking for new recipes and wants to feature YOURS on
                     our website!
                     <br />

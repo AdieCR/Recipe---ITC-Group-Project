@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useState} from 'react'
 import './SignUp.css'
 // import { AccountContext } from '../ModalContext/AccountContext'
 import axios from 'axios'

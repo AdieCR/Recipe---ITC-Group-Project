@@ -32,6 +32,7 @@ function LandingPage() {
                                     src="https://i.imgur.com/YzEqP6e.png"
                                     height="50px"
                                     width="50px"
+                                    alt="logo"
                                 />
                             </div>
                             <span className="stellar">Stellar</span>
@@ -54,6 +55,7 @@ function LandingPage() {
                                     src="https://i.imgur.com/f4B2c2B.png"
                                     height="50px"
                                     width="50px"
+                                    alt="avata"
                                 />
                             </div>
                             <span className="stellar">Stellar Pro</span>
@@ -76,6 +78,7 @@ function LandingPage() {
                                     src=" https://i.imgur.com/C4CUnKG.png"
                                     height="50px"
                                     width="50px"
+                                    alt="logo"
                                 />
                             </div>
                             <span className="stellar">Pro Business</span>
