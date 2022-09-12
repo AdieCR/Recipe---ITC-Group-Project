@@ -61,7 +61,7 @@ function LandingPage() {
                             <span className="stellar">Stellar Pro</span>
                             <span className="hosting">Shared Hosting</span>
                             <span className="price mt-2">
-                                $ 0.99<span class="small"> /mo</span>
+                                $ 0.99<span className="small"> /mo</span>
                             </span>
                             <span className="year">On first year</span>
                             <button className="btn2 btn-success mt-2">
