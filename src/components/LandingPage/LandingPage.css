@@ -5,7 +5,7 @@ body{
 .LandingPageContainer{
     background-image: url("https://img.freepik.com/free-photo/authentic-italian-pasta_24972-886.jpg?w=1060&t=st=1662906384~exp=1662906984~hmac=ce9e4f5717f6a8a0c465dd9f99096268c6e03fbd6bc934ebe03ec0896f8d87cf");
     background-size: cover;
-    height:70vh;
+    height:90vh;
     width:100vw;
     position: absolute;
     top:0;
@@ -13,7 +13,7 @@ body{
 
 }
 .LandingPageContent{
-    margin-top:18%;
+    margin-top:15%;
     color:#fff;
     display: flex;
     flex-direction: column;
@@ -56,3 +56,10 @@ body{
     background: transparent;
     color: #fff;
  }
+ .LandingPageCards{
+    position: absolute;
+    top:80vh;
+    display: flex;
+    width:100%;
+    justify-content:space-around;
+}

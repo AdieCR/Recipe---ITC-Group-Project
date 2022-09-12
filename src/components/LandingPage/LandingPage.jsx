@@ -3,7 +3,8 @@ import "./LandingPage.css"
 
 function LandingPage() {
     return (
-        <div className="LandingPageContainer">
+        <div>
+            <div className="LandingPageContainer">
             <div className="d-flex justify-content-left LandingPageContent">
                 <div className="heading titleBold">It is even better than</div>
                 <div className="heading titleBold">an expensive CookBook</div>
@@ -23,7 +24,8 @@ function LandingPage() {
                     </select>
                 {/* </div> */}
             </div>
-            <div className="row mt-5 p-3 g-3 d-flex justify-content-center">
+            </div>
+            <div className="row mt-5 p-3 g-3 d-flex justify-content-center LandingPageCards">
                 <div className="col-md-4">
                     <div className="card2 p-2 py-3">
                         <div className="text-center d-flex flex-column align-items-center">
