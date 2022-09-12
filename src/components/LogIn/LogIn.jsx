@@ -36,10 +36,10 @@ export default function LogIn() {
           email: email,
           password: password,          
         }
-        const user = await axios.post('http://localhost:5000/user/login', newUser)
+        const user = await axios.post('http://localhost:5000/user/login', newUser,{withCredentials:true})
         setModalShow(false)
         if (user.data.ok){
-          const {data} = await axios.get('/user/id', {withCredentials:true})
+          const {data} = await axios.get('http://localhost:5000/user/id', {withCredentials:true})
         
         }
       }catch(err){

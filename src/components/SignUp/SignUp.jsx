@@ -7,7 +7,7 @@ import axios from 'axios'
 
 
 export default function SignUp() {
-  
+
   const {switchToLogIn} = useContext(RegisterContext)
   const {setModalShow} = useContext(RecipeContext)
   const [firstName, setFirstName] = useState("")
@@ -67,7 +67,7 @@ async function toSignUp(e){
         repassword: passwordConfirm,
         
       }
-      const user = await axios.post('http://localhost:5000/user/signup', newUser)
+      const user = await axios.post('http://localhost:5000/user/signup', newUser,{withCredentials:true})
       console.log(user)
       setModalShow(false)
       if (user.data.ok){
