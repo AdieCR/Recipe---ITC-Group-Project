@@ -16,6 +16,10 @@ import NavBar from "./components/NavBar/NavBar";
 import LogIn from "./components/LogIn/LogIn";
 import SignUp from "./components/SignUp/SignUp";
 import MyCookBook from "./components/MyCookBook/MyCookBook";
+import SearchPage from "./components/SearchPage/SearchPage";
+import RecipeList from "./components/RecipeList/RecipeList";
+import RecipeCard from "./components/RecipeCard/RecipeCard";
+import RecipePage from "./components/RecipePage/RecipePage";
 
 function App() {
   const [modalShow, setModalShow] = useState(false);
@@ -56,6 +60,10 @@ function App() {
           <Route path="/LogIn" element={<LogIn />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/myCookBook" element={<MyCookBook />} />
+          <Route path="/searchPage" element={<SearchPage />}/>
+          <Route path="/recipeList" element={<RecipeList />}/>
+          <Route path="/recipeCard" element={<RecipeCard />}/>
+          <Route path="/recipePage" element={<RecipePage />}/>
         </Routes>
       </RecipeContext.Provider>
     </div>
