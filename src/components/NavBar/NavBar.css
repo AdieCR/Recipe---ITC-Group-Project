@@ -1,12 +1,16 @@
-.title{
+.navBarContainer{
+    background-color: #fff;
+    opacity: 0.7;
+}
+/* .title{
     font-family: 'Cherry Swash', cursive;
     font-weight: 400;
     font-size: 1.5rem;
     color: #fff;
     margin-right: 1rem;
 
-}
-.titleA{
+} */
+.title{
     font-family: 'Cherry Swash', cursive;
     font-weight: 400;
     font-size: 1.5rem;
@@ -28,22 +32,32 @@
     display: flex;
     align-items: center;
 }
-.NavBarItem{
+/* .NavBarItem{
     color:#fff;
-}
-.NavBarItemA{
+} */
+.NavBarItem{
     color: rgb(26, 26, 26);
-}
-.SignInBtnA{
-    background: transparent;
-    border: 1px solid  rgb(26, 26, 26);
-    border-radius: 19px;
 }
 .SignInBtn{
     background: transparent;
+    border: 1px solid  rgb(26, 26, 26);
+    border-radius: 19px;
+    color: rgb(26, 26, 26);
+}
+/* .SignInBtn{
+    background: transparent;
     border: 1px solid #fff;
     border-radius: 19px;
+} */
+/* .SignInBtn:hover{
+    opacity: 0.5;
+    background-color: none; 
+    background: transparent; 
 }
+.SignInBtn:focus{
+    background-color: none;
+    background: transparent; 
+} */
 .SignInBtn:hover{
     opacity: 0.5;
     background-color: none; 
@@ -53,12 +67,8 @@
     background-color: none;
     background: transparent; 
 }
-.SignInBtnA:hover{
-    opacity: 0.5;
-    background-color: none; 
-    background: transparent; 
-}
-.SignInBtnA:focus{
-    background-color: none;
-    background: transparent; 
+.navBarLogo{
+    height:30px;
+    width:30px;
+    margin-right:6px;
 }
