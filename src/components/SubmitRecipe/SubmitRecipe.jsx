@@ -16,6 +16,8 @@ function SubmitRecipe() {
     const [errorMessage, setErrorMessage] = useState("");
 
     async function toAddRecipe(e) {
+
+
         e.preventDefault();
         const tempError = [];
         if (!recipeTitle) {
@@ -36,6 +38,9 @@ function SubmitRecipe() {
         if (!servings) {
             tempError.push("Servings is required");
         }
+        // if  servings.typeof !== isInteger) {
+        //     tempError.push("Servings is required");
+        // }
         if (!totalTime) {
             tempError.push("Total Time is required");
         }
@@ -74,7 +79,7 @@ function SubmitRecipe() {
         console.log(tempError);
     }
 
-    console.log(ingredients);
+    console.log("servings", servings);
 
     return (
         <div className="container mt-3">
@@ -149,83 +154,131 @@ function SubmitRecipe() {
                                             rows="3"
                                             placeholder="Type ingredients"
                                             onChange={(e) =>
-                                                setIngredients(e.target.value.split(/\r?\n/))
+                                                setIngredients(
+                                                    e.target.value.split(
+                                                        /\r?\n/
+                                                    )
+                                                )
                                             }
                                         />
-                                        <div id="passwordHelpBlock" class="form-text">
-  Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-</div>
-                                        <div className="col-lg-5 col-md-6 col-sm-12"></div>
-                                        <div className="form-group">
-                                            <label for="description">
-                                                Description
-                                            </label>
-                                            <input
-                                                type="text"
-                                                className="form-control"
-                                                id="description"
-                                                placeholder=""
-                                            />
+                                        <div
+                                            id="passwordHelpBlock"
+                                            class="form-text"
+                                        >
+                                            Please put each ingredient and its
+                                            measurement on its own line.
                                         </div>
-                                        <div className="form-group">
-                                            <label for="inputEmail4">
-                                                Project Type
-                                            </label>
-                                            <select className="form-control">
-                                                <option>Web Design</option>
-                                                <option>Blockchain</option>
-                                                <option>ML</option>
-                                            </select>
+                                        <label for="directions">
+                                            Directions
+                                        </label>
+                                        <textarea
+                                            type="text"
+                                            id="directions"
+                                            className="form-control"
+                                            rows="3"
+                                            placeholder="Type directions"
+                                            onChange={(e) =>
+                                                setDirections(
+                                                    e.target.value.split(
+                                                        /\r?\n/
+                                                    )
+                                                )
+                                            }
+                                        />
+                                        <div
+                                            id="passwordHelpBlock"
+                                            class="form-text"
+                                        >
+                                            Please put each step on its own
+                                            line.
                                         </div>
-                                        <div className="form-group">
-                                            <label for="time">
-                                                Maximum time for the project
+                                        <div className="row">
+                                            <div className="col-md-4">
+                                                <label for="servings">
+                                                    Servings
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    id="servings"
+                                                    className="form-control"
+                                                    placeholder="Type servings"
+                                                    onChange={(e) =>
+                                                        setServings(
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                />
+                                            </div>
+                                            <div className="col-md-4">
+                                                <label for="totalTime">
+                                                    Total Time
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    id="totalTime"
+                                                    className="form-control"
+                                                    placeholder="Type Total Time In minutes"
+                                                    onChange={(e) =>
+                                                        setTotalTime(
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                />
+                                            </div>
+                                            <div className="col-md-4">
+                                                <label for="difficulty">
+                                                    Difficulty
+                                                </label>
+                                                <select
+                                                    id="difficulty"
+                                                    className="form-control"
+                                                    onChange={(e) =>
+                                                        setDifficulty(
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                >
+                                                    <option>
+                                                        Choose Difficulty
+                                                    </option>
+                                                    <option>Beginner</option>
+                                                    <option>
+                                                        Intermediate
+                                                    </option>
+                                                    <option>Advanced</option>
+                                                </select>
+                                            </div>
+                                            <label for="createdBy">
+                                                Created By
                                             </label>
-                                            <input
-                                                type="text"
-                                                className="form-control"
-                                                id="time"
-                                                placeholder=""
-                                            />
+                                            <div className="createdBy">
+                                                <input
+                                                    type="text"
+                                                    id="createdBy"
+                                                    className="form-control"
+                                                    placeholder="Type Created By"
+                                                    onChange={(e) =>
+                                                        setCreatedBy(
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                />
+                                            </div>
                                         </div>
-                                        <div className="form-group">
-                                            <label for="skill">
-                                                Required Skills
-                                            </label>
-                                            <input
-                                                type="text"
-                                                className="form-control"
-                                                id="skill"
-                                                placeholder=""
-                                            />
-                                        </div>
-
                                         <div className="row justify-content-center">
-                                            <div className="col-md-12 col-lg-10 col-12">
-                                                <div className="form-group files">
-                                                    <label className="my-auto">
-                                                        Upload Your File
-                                                    </label>
-                                                    <input
-                                                        id="file"
-                                                        type="file"
-                                                        className="form-control"
-                                                    />
-                                                </div>
+                                            <div className="form-group files">
+                                                <label className="my-auto">
+                                                    Upload Your File
+                                                </label>
+                                                <input
+                                                    id="file"
+                                                    type="file"
+                                                    className="form-control"
+                                                />
                                             </div>
                                         </div>
                                         <div className="row justify-content-center">
                                             <div className="col-md-12 col-lg-10 col-12">
-                                                <div className="form-group">
-                                                    <label for="exampleFormControlTextarea2">
-                                                        Message
-                                                    </label>
-                                                    <textarea
-                                                        className="form-control rounded-0"
-                                                        id="exampleFormControlTextarea2"
-                                                        rows="5"
-                                                    ></textarea>
-                                                </div>
                                                 <div className="mb-2 mt-4">
                                                     <div className="text-right">
                                                         <button
