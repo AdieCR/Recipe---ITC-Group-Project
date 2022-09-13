@@ -25,7 +25,8 @@ function App() {
   const [modalShow, setModalShow] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const [recipeList, setRecipeList] = useState([]);
+  
   async function fetchUser() {
     const { data } = await axios.get("http://localhost:5000/user/id", {
       withCredentials: true,
@@ -55,12 +56,12 @@ function App() {
       <RecipeContext.Provider value={contextValue}>
         <NavBar />
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/" element={<LandingPage  setRecipeList={setRecipeList}/>} />
           <Route path="/submitRecipe" element={<SubmitRecipe />} />
           <Route path="/LogIn" element={<LogIn />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/myCookBook" element={<MyCookBook />} />
-          <Route path="/searchPage" element={<SearchPage />}/>
+          <Route path="/searchPage" element={<SearchPage setRecipeList={setRecipeList} recipeList={recipeList}/>}/>
           <Route path="/recipeList" element={<RecipeList />}/>
           <Route path="/recipeCard" element={<RecipeCard />}/>
           <Route path="/recipePage" element={<RecipePage />}/>
