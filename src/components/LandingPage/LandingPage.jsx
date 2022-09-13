@@ -1,5 +1,6 @@
 import React from "react";
 import "./LandingPage.css"
+import Search from './Search.png'
 
 function LandingPage() {
     return (
@@ -20,9 +21,18 @@ function LandingPage() {
                 {/* <div className="btn1"> */}
                     <select className="d-flex flex-row align-items-center justify-content-center gap-1 buttonitems LandingPageCategory">
                         {/* <i className="fa fa-play-circle-o fs-3 mt-1"></i> */}
-                        Categories
+                                            <option></option>
+                                            <option className="option">African</option>
+                                            <option className="option">European</option>
+                                            <option className="option">Latin</option>
+                                            <option className="option">Middle East</option>
+                                            <option className="option">USA</option>
                     </select>
                 {/* </div> */}
+                <div className="LandingBtn">
+                    <img src={Search} alt="searcg" className="LandingPageSearchBtn"/>
+                    
+                </div>
             </div>
             </div>
             <div className="row mt-5 p-3 g-3 d-flex justify-content-center LandingPageCards">

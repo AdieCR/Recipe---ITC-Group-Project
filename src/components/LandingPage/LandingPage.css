@@ -30,9 +30,10 @@ body{
     display:flex;
     align-content: center;
     justify-content: space-between;
-    width:30%;
+    width:32%;
     margin-left:10%;
     margin-top: 5%;
+    overflow: hidden;
 }
 .LandingPageInput{
     background: transparent;
@@ -56,11 +57,25 @@ body{
     background: transparent;
     color: #fff;
     margin-right: 15px;
+    border-left: 1px solid #fff;
  }
+.option{
+    color:rgba(27,27,27,0.5);
+    font-size: 15px;
+}
  .LandingPageCards{
     position: absolute;
     top:80vh;
     display: flex;
     width:100%;
     justify-content:space-around;
+}
+.LandingPageSearchBtn{
+    height: 40px;
+}
+.LandingBtn{
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    
 }
