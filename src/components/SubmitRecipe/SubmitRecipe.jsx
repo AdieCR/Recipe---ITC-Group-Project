@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import * as yup from "yup";
 
 function SubmitRecipe() {
     const [recipeTitle, setRecipeTitle] = useState("");
@@ -7,7 +8,7 @@ function SubmitRecipe() {
     const [category, setCategory] = useState("");
     const [ingredients, setIngredients] = useState([]);
     const [directions, setDirections] = useState([]);
-    const [servings, setServings] = useState("");
+    const [servings, setServings] = useState(0);
     const [totalTime, setTotalTime] = useState("");
     const [difficulty, setDifficulty] = useState("");
     const [createdBy, setCreatedBy] = useState("");
@@ -15,9 +16,12 @@ function SubmitRecipe() {
     const [error, setError] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
 
+    let schema = yup.object().shape({
+        servings: yup.number().positive(),
+        totalTime: yup.number().positive(),
+    });
+
     async function toAddRecipe(e) {
-
-
         e.preventDefault();
         const tempError = [];
         if (!recipeTitle) {
@@ -35,15 +39,31 @@ function SubmitRecipe() {
         if (!directions) {
             tempError.push("Directions is required");
         }
-        if (!servings) {
-            tempError.push("Servings is required");
-        }
-        // if  servings.typeof !== isInteger) {
-        //     tempError.push("Servings is required");
-        // }
-        if (!totalTime) {
-            tempError.push("Total Time is required");
-        }
+
+        schema
+            .isValid({
+                servings: servings,
+            })
+            .then(function (valid) {
+                if (!servings) {
+                    return tempError.push("Servings is required");
+                } else if (!valid) {
+                    return tempError.push("Servings should be a positive number");
+                }
+               
+                schema
+                .isValid({
+                    totalTime: totalTime,
+                })
+                .then( function (valid) {
+                    if (!totalTime) {
+                        tempError.push("Total Time is required");
+                    } else if (!valid) {
+                        tempError.push("Total Time should be a positive number");
+                    }
+                });
+            });
+
         if (!difficulty) {
             tempError.push("Difficulty is required");
         }
@@ -67,7 +87,7 @@ function SubmitRecipe() {
                     createdBy,
                     picture,
                 };
-                const recipe = axios.post("localhost:5000/recipe", newRecipe);
+                const recipe = await axios.post("localhost:5000/recipe", newRecipe,{withCredentials:true});
                 console.log(recipe.data);
             } catch (err) {
                 tempError.push(err);
@@ -78,8 +98,6 @@ function SubmitRecipe() {
 
         console.log(tempError);
     }
-
-    console.log("servings", servings);
 
     return (
         <div className="container mt-3">
@@ -111,7 +129,7 @@ function SubmitRecipe() {
                                         <input
                                             type="text"
                                             id="recipeTitle"
-                                            className="form-control"
+                                            className="form-control mb-3"
                                             placeholder="Type Recipe Title"
                                             onChange={(e) =>
                                                 setRecipeTitle(e.target.value)
@@ -123,7 +141,7 @@ function SubmitRecipe() {
                                         <input
                                             type="text"
                                             id="description"
-                                            className="form-control"
+                                            className="form-control  mb-3"
                                             placeholder="Type description"
                                             onChange={(e) =>
                                                 setDescription(e.target.value)
@@ -132,7 +150,7 @@ function SubmitRecipe() {
                                         <label for="category">Category</label>
                                         <select
                                             id="category"
-                                            className="form-control"
+                                            className="form-control mb-3"
                                             onChange={(e) =>
                                                 setCategory(e.target.value)
                                             }
@@ -162,8 +180,8 @@ function SubmitRecipe() {
                                             }
                                         />
                                         <div
-                                            id="passwordHelpBlock"
-                                            class="form-text"
+                                            id="ingredientsHelpBlock"
+                                            class="form-text mb-3"
                                         >
                                             Please put each ingredient and its
                                             measurement on its own line.
@@ -186,14 +204,14 @@ function SubmitRecipe() {
                                             }
                                         />
                                         <div
-                                            id="passwordHelpBlock"
-                                            class="form-text"
+                                            id="directionsHelpBlock"
+                                            class="form-text mb-3"
                                         >
                                             Please put each step on its own
                                             line.
                                         </div>
                                         <div className="row">
-                                            <div className="col-md-4">
+                                            <div className="col-md-4 mb-3">
                                                 <label for="servings">
                                                     Servings
                                                 </label>
@@ -208,8 +226,15 @@ function SubmitRecipe() {
                                                         )
                                                     }
                                                 />
+                                            <div
+                                                id="ServingsHelpBlock"
+                                                class="form-text"
+                                            >
+                                                Servings should be a positive
+                                                number.
                                             </div>
-                                            <div className="col-md-4">
+                                            </div>
+                                            <div className="col-md-4 mb-3">
                                                 <label for="totalTime">
                                                     Total Time
                                                 </label>
@@ -217,15 +242,21 @@ function SubmitRecipe() {
                                                     type="text"
                                                     id="totalTime"
                                                     className="form-control"
-                                                    placeholder="Type Total Time In minutes"
+                                                    placeholder="Type Total Time"
                                                     onChange={(e) =>
                                                         setTotalTime(
                                                             e.target.value
                                                         )
                                                     }
                                                 />
+                                            <div
+                                                id="totalTimeHelpBlock"
+                                                class="form-text"
+                                            >
+                                                Total Time in minutes.
                                             </div>
-                                            <div className="col-md-4">
+                                            </div>
+                                            <div className="col-md-4 mb-3">
                                                 <label for="difficulty">
                                                     Difficulty
                                                 </label>
@@ -251,7 +282,7 @@ function SubmitRecipe() {
                                             <label for="createdBy">
                                                 Created By
                                             </label>
-                                            <div className="createdBy">
+                                            <div className="createdBy mb-3">
                                                 <input
                                                     type="text"
                                                     id="createdBy"
@@ -271,15 +302,26 @@ function SubmitRecipe() {
                                                     Upload Your File
                                                 </label>
                                                 <input
-                                                    id="file"
+                                                    id="picture"
                                                     type="file"
+                                                    accept="image/*"
                                                     className="form-control"
+                                                    onChange={(e) =>
+                                                        setPicture(
+                                                            e.target.files
+                                                        )
+                                                    }
                                                 />
                                             </div>
                                         </div>
                                         <div className="row justify-content-center">
                                             <div className="col-md-12 col-lg-10 col-12">
                                                 <div className="mb-2 mt-4">
+                                                    {/* <div className="warning mb-2 text-danger">
+                                                        {errorMessage.length >
+                                                            0 &&
+                                                            `* ${errorMessage}`}
+                                                    </div> */}
                                                     <div className="text-right">
                                                         <button
                                                             type="submit"
@@ -292,10 +334,6 @@ function SubmitRecipe() {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="warning">
-                                            {errorMessage.length > 0 &&
-                                                errorMessage}
                                         </div>
                                     </form>
                                 </div>
