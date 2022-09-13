@@ -38,8 +38,7 @@ function App() {
 
   useEffect(() => {
     fetchUser();
-    console.log(isLoggedIn, "isLoggedIn")
-
+    console.log(isLoggedIn, "isLoggedIn");
   }, []);
 
   const contextValue = {
@@ -60,10 +59,10 @@ function App() {
           <Route path="/LogIn" element={<LogIn />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/myCookBook" element={<MyCookBook />} />
-          <Route path="/searchPage" element={<SearchPage />}/>
-          <Route path="/recipeList" element={<RecipeList />}/>
-          <Route path="/recipeCard" element={<RecipeCard />}/>
-          <Route path="/recipePage" element={<RecipePage />}/>
+          <Route path="/searchPage" element={<SearchPage />} />
+          <Route path="/recipeList" element={<RecipeList />} />
+          <Route path="/recipeCard" element={<RecipeCard />} />
+          <Route path="/recipe/:id" element={<RecipePage />} />
         </Routes>
       </RecipeContext.Provider>
     </div>
