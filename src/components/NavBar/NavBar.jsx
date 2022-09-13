@@ -20,7 +20,7 @@ function NavBar() {
     async function signOut(){
         setCurrentUser({});
         setIsLoggedIn(false);
-        const signedOut = await axios.post('http://localhost:5000/user/signout', {withCredentials:true});
+        const signedOut = await axios.get('http://localhost:5000/user/signout', {withCredentials:true});
         if (signedOut.data.ok){
             navigate("/")
         }
