@@ -21,6 +21,8 @@ const RecipePage = () => {
       }
     );
     setRecipe(data);
+    console.log(recipe);
+
     if (data) {
       const { data } = await axios.get("http://localhost:5000/recipe", {
         withCredentials: true,
@@ -76,7 +78,6 @@ const RecipePage = () => {
       setFetchUserBool((prev) => !prev);
     }
   };
-  console.log(recipe);
   return (
     <Container>
       <h4>Test to see if works. Please I (Daniel) don't want to design.</h4>
@@ -94,12 +95,12 @@ const RecipePage = () => {
       <div>{recipe.totalTime}</div>
       <div>{recipe.category}</div>
       <div>
-        {recipe.ingredients.map((ingredient) => (
+        {recipe?.ingredients?.map((ingredient) => (
           <div>{ingredient}</div>
         ))}
       </div>
       <div>
-        {recipe.directions.map((direction) => (
+        {recipe?.directions?.map((direction) => (
           <div>{direction}</div>
         ))}
       </div>
