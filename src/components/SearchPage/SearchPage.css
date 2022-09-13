@@ -1,0 +1,22 @@
+.SearchPageContainer{
+    height:100%;
+    width:100%;
+}
+.SearchPageTopContainer{
+    display: flex;
+    flex-direction: column;
+    background: url("https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80") ;
+    height:30%;
+    width:100%; 
+}
+h1{
+    color: #fff;
+    font-family: 'Cherry Swash', cursive;
+    margin-left: 10% ;
+}
+.SearchPageBottomContainer{
+    height: 70%;
+    width:100%;
+    display: flex;
+    background-color: #e6e4d4af;
+}

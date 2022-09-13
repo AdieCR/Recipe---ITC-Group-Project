@@ -71,6 +71,15 @@ function NavBar() {
                             </li>
                             <li className="nav-item">
                                 <Link
+                                    to="/searchPage"
+                                    className="nav-link NavBarItem"
+                                    title="SearchPage"
+                                >
+                                    Search
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link
                                     to="/SubmitRecipe"
                                     className="nav-link NavBarItem"
                                     title="SubmitRecipe"
@@ -87,6 +96,7 @@ function NavBar() {
                                     My CookBook
                                 </Link>
                             </li>
+                            
                         </ul>
 
                             {!isLoggedIn ? (<><div className="btn btn-dark SignInBtn" onClick={() => setModalShow(true)}> Sign in</div>

@@ -3,14 +3,16 @@ import {useSearchParams} from "react-router-dom";
 import "./LandingPage.css";
 import Search from "./Search.png";
 import axios from "axios";
-function LandingPage() {
+import {Link} from "react-router-dom";
+
+function LandingPage({setRecipeList}) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [textSearch, setTextSearch] = useState("");
   const [optionSearch, setOptionSearch] = useState("");
   const[difficulty, setDifficulty] = useState("");
 
   async function handleSearch(){
-    const search = {
+        const search = {
         recipeTitle: textSearch,
         category: optionSearch,
         difficulty: difficulty,
@@ -23,10 +25,12 @@ function LandingPage() {
 
     try{
         const searchResult = await axios.get("http://localhost:5000/recipe", {params: searchObj});
-        console.log(searchResult.data)
+        setRecipeList(searchResult);
+        
     }catch(e){
 
     }
+    <Link to="/searchPage"></Link>
   }
 
   return (
