@@ -305,7 +305,7 @@ function SubmitRecipe() {
                                                     className="form-control"
                                                     onChange={(e) =>
                                                         setPicture(
-                                                            e.target.files
+                                                            e.target.files[0]
                                                         )
                                                     }
                                                 />
@@ -314,11 +314,11 @@ function SubmitRecipe() {
                                         <div className="row justify-content-center">
                                             <div className="col-md-12 col-lg-10 col-12">
                                                 <div className="mb-2 mt-4">
-                                                    <div className="warning mb-2 text-danger">
+                                                    {/* <div className="warning mb-2 text-danger">
                                                         {errorMessage.length >
                                                             0 &&
                                                             `* ${errorMessage}`}
-                                                    </div>
+                                                    </div> */}
                                                     <div className="text-right">
                                                         <button
                                                             type="submit"
