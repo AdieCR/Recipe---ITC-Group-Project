@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 
 export default function RecipeCard({recipe}){
 
+    console.log(recipe);
 
 return (
     <Card>
