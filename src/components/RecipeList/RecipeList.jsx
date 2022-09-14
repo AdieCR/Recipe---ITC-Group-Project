@@ -16,6 +16,7 @@ function RecipeList({RecipeList}) {
          </Row>
     </div>
   )
+  
 }
 
 export default RecipeList
