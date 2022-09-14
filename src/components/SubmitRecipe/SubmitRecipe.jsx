@@ -2,45 +2,45 @@ import React, { useState } from "react";
 import axios from "axios";
 import * as yup from "yup";
 import SubmitRecipeImg from "./SubmitRecipeImg.jpg";
-import "./SubmitRecipeImg.css"
+import "./SubmitRecipeImg.css";
 
 function SubmitRecipe() {
-  const [recipeTitle, setRecipeTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
-  const [ingredients, setIngredients] = useState([]);
-  const [directions, setDirections] = useState([]);
-  const [servings, setServings] = useState(0);
-  const [totalTime, setTotalTime] = useState("");
-  const [difficulty, setDifficulty] = useState("");
-  const [createdBy, setCreatedBy] = useState("");
-  const [picture, setPicture] = useState("");
-  const [error, setError] = useState([]);
-  const [errorMessage, setErrorMessage] = useState("");
+    const [recipeTitle, setRecipeTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [category, setCategory] = useState("");
+    const [ingredients, setIngredients] = useState([]);
+    const [directions, setDirections] = useState([]);
+    const [servings, setServings] = useState(0);
+    const [totalTime, setTotalTime] = useState("");
+    const [difficulty, setDifficulty] = useState("");
+    const [createdBy, setCreatedBy] = useState("");
+    const [picture, setPicture] = useState("");
+    const [error, setError] = useState([]);
+    const [errorMessage, setErrorMessage] = useState("");
 
-  let schema = yup.object().shape({
-    servings: yup.number().positive(),
-    totalTime: yup.number().positive(),
-  });
+    let schema = yup.object().shape({
+        servings: yup.number().positive(),
+        totalTime: yup.number().positive(),
+    });
 
-  async function toAddRecipe(e) {
-    e.preventDefault();
-    const tempError = [];
-    if (!recipeTitle) {
-      tempError.push("Recipe Title is required");
-    }
-    if (!description) {
-      tempError.push("Description is required");
-    }
-    if (!category) {
-      tempError.push("Category is required");
-    }
-    if (!ingredients) {
-      tempError.push("Ingredients is required");
-    }
-    if (!directions) {
-      tempError.push("Directions is required");
-    }
+    async function toAddRecipe(e) {
+        e.preventDefault();
+        const tempError = [];
+        if (!recipeTitle) {
+            tempError.push("Recipe Title is required");
+        }
+        if (!description) {
+            tempError.push("Description is required");
+        }
+        if (!category) {
+            tempError.push("Category is required");
+        }
+        if (!ingredients) {
+            tempError.push("Ingredients is required");
+        }
+        if (!directions) {
+            tempError.push("Directions is required");
+        }
 
         schema
             .isValid({
@@ -70,78 +70,70 @@ function SubmitRecipe() {
                     });
             });
 
-    if (!difficulty) {
-      tempError.push("Difficulty is required");
-    }
-    if (!createdBy) {
-      tempError.push("Created By is required");
-    }
-    if (!picture) {
-      tempError.push("Picture is required");
-    }
-    if (tempError.length === 0) {
-      try {
-        const newRecipe = {
-          recipeTitle,
-          description,
-          category,
-          ingredients,
-          directions,
-          servings,
-          totalTime,
-          difficulty,
-          createdBy,
-          picture,
-        };
-        console.log("newRecipe", newRecipe);
-        const recipeData = new FormData();
-        recipeData.append("recipeTitle", newRecipe.recipeTitle);
-        recipeData.append("description", newRecipe.description);
-        recipeData.append("category", newRecipe.category);
-        recipeData.append("servings", newRecipe.servings.toString());
-        recipeData.append("totalTime", newRecipe.totalTime.toString());
-        recipeData.append("ingredients", newRecipe.ingredients);
-        recipeData.append("directions", newRecipe.directions);
-        // recipeData.append("createdBy", newRecipe.createdBy);
-        recipeData.append("picture", newRecipe.picture);
-        recipeData.append("difficulty", newRecipe.difficulty);
+        if (!difficulty) {
+            tempError.push("Difficulty is required");
+        }
+        if (!createdBy) {
+            tempError.push("Created By is required");
+        }
+        if (!picture) {
+            tempError.push("Picture is required");
+        }
+        if (tempError.length === 0) {
+            try {
+                const newRecipe = {
+                    recipeTitle,
+                    description,
+                    category,
+                    ingredients,
+                    directions,
+                    servings,
+                    totalTime,
+                    difficulty,
+                    createdBy,
+                    picture,
+                };
+                console.log("newRecipe", newRecipe);
+                const recipeData = new FormData();
+                recipeData.append("recipeTitle", newRecipe.recipeTitle);
+                recipeData.append("description", newRecipe.description);
+                recipeData.append("category", newRecipe.category);
+                recipeData.append("servings", newRecipe.servings.toString());
+                recipeData.append("totalTime", newRecipe.totalTime.toString());
+                recipeData.append("ingredients", newRecipe.ingredients);
+                recipeData.append("directions", newRecipe.directions);
+                // recipeData.append("createdBy", newRecipe.createdBy);
+                recipeData.append("picture", newRecipe.picture);
+                recipeData.append("difficulty", newRecipe.difficulty);
 
-        console.log("1", ...recipeData); // shortest script solution
-        console.log(["2", ...recipeData]); // Think 2D array makes it more readable
+                console.log("1", ...recipeData); // shortest script solution
+                console.log(["2", ...recipeData]); // Think 2D array makes it more readable
 
-        const recipe = await axios.post(
-          "http://localhost:5000/recipe",
-          recipeData,
-          { withCredentials: true }
-        );
-        console.log(recipe.data);
-      } catch (err) {
-        tempError.push(err);
-        console.log(err);
-      }
+                const recipe = await axios.post(
+                    "http://localhost:5000/recipe",
+                    recipeData,
+                    { withCredentials: true }
+                );
+                console.log(recipe.data);
+            } catch (err) {
+                tempError.push(err);
+                console.log(err);
+            }
+        }
+        setErrorMessage(tempError[0]);
+
+        console.log(tempError);
     }
-    setErrorMessage(tempError[0]);
-
-    console.log(tempError);
-  }
 
     return (
         <div className="SubmitRecipeImg">
-
-            <div className="mt-3 d-flex justify-content-center">
-                <span className="heading">Recipe!</span>
+            <div className="mt-5 pt-3 d-flex justify-content-center">
+                <span className="heading text-light">
+                    Do you have a good recipe?
+                </span>
             </div>
             <div className="d-flex justify-content-center">
-                <span className="text">Hey, nice to see you</span>
-            </div>
-            <div className="mt-3 d-flex justify-content-center">
-                <span className="text1">
-                    We are looking for new recipes and wants to feature YOURS on
-                    our website!
-                    <br />
-                    Got a recipe that's been passed down in the family? A new
-                    recipe you came up with?
-                </span>
+                <span className="text text-white mb-3">Share with us!</span>
             </div>
             <div className="card-body px-0">
                 <div className="row justify-content-center mb-5">
@@ -349,28 +341,28 @@ function SubmitRecipe() {
                                                             0 &&
                                                             `* ${errorMessage}`}
                                                     </div> */}
-                          <div className="text-right">
-                            <button
-                              type="submit"
-                              className="btn btn-primary btn-block"
-                            >
-                              <small className="font-weight-bold">
-                                Add Recipe
-                              </small>
-                            </button>
-                          </div>
+                                                    <div className="text-right">
+                                                        <button
+                                                            type="submit"
+                                                            className="btn btn-primary btn-block"
+                                                        >
+                                                            <small className="font-weight-bold">
+                                                                Add Recipe
+                                                            </small>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                  </form>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default SubmitRecipe;
