@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {Link, useSearchParams} from "react-router-dom";
 import Search from "../LandingPage/Search.png";
@@ -11,6 +11,22 @@ function SearchPage({setRecipeList,recipeList}) {
     const [textSearch, setTextSearch] = useState("");
     const [optionSearch, setOptionSearch] = useState("");
     const[difficulty, setDifficulty] = useState("");
+    const [allRecipes, setAllRecipes] = useState([]);
+
+
+    async function getRecipes(){
+        const searchResult = await axios.get("http://localhost:5000/recipe");
+        if (!recipeList.length){
+            setAllRecipes(searchResult.data);
+        }else{
+            setAllRecipes(recipeList);
+        }
+        
+    }
+
+    useEffect(()=>{
+        getRecipes()
+    },[])
   
     async function handleSearch(){
           const search = {
@@ -26,7 +42,7 @@ function SearchPage({setRecipeList,recipeList}) {
   
       try{
           const searchResult = await axios.get("http://localhost:5000/recipe", {params: searchObj});
-          setRecipeList(searchResult);
+          setAllRecipes(searchResult);
           
       }catch(e){
   
@@ -82,7 +98,7 @@ function SearchPage({setRecipeList,recipeList}) {
 
     </div>
     <div className="SearchPageBottomContainer">
-        <RecipeList recipeList={recipeList} setRecipeList={setRecipeList}/>
+        <RecipeList allRecipes={allRecipes}/>
     </div>
     </div>
   )
