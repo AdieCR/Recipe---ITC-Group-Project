@@ -6,7 +6,7 @@ export default function RecipeCard({recipe}){
 
 
 return (
-    <Card style={{ width: '18rem' }}>
+    <Card>
     <Card.Img variant="top" src={recipe.picture} />
     <Card.Body>
       <Card.Title>{recipe.recipeTitle}</Card.Title>
