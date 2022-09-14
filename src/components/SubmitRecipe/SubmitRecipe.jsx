@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import * as yup from "yup";
+import SubmitRecipeImg from "./SubmitRecipeImg.jpg";
+import "./SubmitRecipeImg.css"
 
 function SubmitRecipe() {
     const [recipeTitle, setRecipeTitle] = useState("");
@@ -48,20 +50,24 @@ function SubmitRecipe() {
                 if (!servings) {
                     return tempError.push("Servings is required");
                 } else if (!valid) {
-                    return tempError.push("Servings should be a positive number");
+                    return tempError.push(
+                        "Servings should be a positive number"
+                    );
                 }
-               
+
                 schema
-                .isValid({
-                    totalTime: totalTime,
-                })
-                .then( function (valid) {
-                    if (!totalTime) {
-                        tempError.push("Total Time is required");
-                    } else if (!valid) {
-                        tempError.push("Total Time should be a positive number");
-                    }
-                });
+                    .isValid({
+                        totalTime: totalTime,
+                    })
+                    .then(function (valid) {
+                        if (!totalTime) {
+                            tempError.push("Total Time is required");
+                        } else if (!valid) {
+                            tempError.push(
+                                "Total Time should be a positive number"
+                            );
+                        }
+                    });
             });
 
         if (!difficulty) {
@@ -87,7 +93,11 @@ function SubmitRecipe() {
                     createdBy,
                     picture,
                 };
-                const recipe = await axios.post("localhost:5000/recipe", newRecipe,{withCredentials:true});
+                const recipe = await axios.post(
+                    "localhost:5000/recipe",
+                    newRecipe,
+                    { withCredentials: true }
+                );
                 console.log(recipe.data);
             } catch (err) {
                 tempError.push(err);
@@ -100,7 +110,8 @@ function SubmitRecipe() {
     }
 
     return (
-        <div className="container mt-3">
+        <div className="SubmitRecipeImg">
+
             <div className="mt-3 d-flex justify-content-center">
                 <span className="heading">Recipe!</span>
             </div>
@@ -226,13 +237,13 @@ function SubmitRecipe() {
                                                         )
                                                     }
                                                 />
-                                            <div
-                                                id="ServingsHelpBlock"
-                                                class="form-text"
-                                            >
-                                                Servings should be a positive
-                                                number.
-                                            </div>
+                                                <div
+                                                    id="ServingsHelpBlock"
+                                                    class="form-text"
+                                                >
+                                                    Servings should be a
+                                                    positive number.
+                                                </div>
                                             </div>
                                             <div className="col-md-4 mb-3">
                                                 <label for="totalTime">
@@ -249,12 +260,12 @@ function SubmitRecipe() {
                                                         )
                                                     }
                                                 />
-                                            <div
-                                                id="totalTimeHelpBlock"
-                                                class="form-text"
-                                            >
-                                                Total Time in minutes.
-                                            </div>
+                                                <div
+                                                    id="totalTimeHelpBlock"
+                                                    class="form-text"
+                                                >
+                                                    Total Time in minutes.
+                                                </div>
                                             </div>
                                             <div className="col-md-4 mb-3">
                                                 <label for="difficulty">
