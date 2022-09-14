@@ -1,0 +1,21 @@
+/* .SubmitRecipeImg {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 1em;
+    box-sizing: border-box;
+    color: white;
+    background: url(./SubmitRecipeImg.jpg) center center no-repeat;
+    background-size: cover;
+} */
+
+.SubmitRecipeImg {
+    background-image: url("https://img.freepik.com/free-photo/authentic-italian-pasta_24972-886.jpg?w=1060&t=st=1662906384~exp=1662906984~hmac=ce9e4f5717f6a8a0c465dd9f99096268c6e03fbd6bc934ebe03ec0896f8d87cf");
+    background-size: cover;
+    /* height: 100%; */
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
