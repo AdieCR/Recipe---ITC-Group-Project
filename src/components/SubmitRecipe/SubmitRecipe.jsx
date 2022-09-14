@@ -13,7 +13,6 @@ function SubmitRecipe() {
     const [servings, setServings] = useState(0);
     const [totalTime, setTotalTime] = useState("");
     const [difficulty, setDifficulty] = useState("");
-    const [createdBy, setCreatedBy] = useState("");
     const [picture, setPicture] = useState("");
     const [error, setError] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
@@ -73,9 +72,6 @@ function SubmitRecipe() {
         if (!difficulty) {
             tempError.push("Difficulty is required");
         }
-        if (!createdBy) {
-            tempError.push("Created By is required");
-        }
         if (!picture) {
             tempError.push("Picture is required");
         }
@@ -90,7 +86,6 @@ function SubmitRecipe() {
                     servings,
                     totalTime,
                     difficulty,
-                    createdBy,
                     picture,
                 };
                 console.log("newRecipe", newRecipe);
@@ -102,7 +97,6 @@ function SubmitRecipe() {
                 recipeData.append("totalTime", newRecipe.totalTime.toString());
                 recipeData.append("ingredients", newRecipe.ingredients);
                 recipeData.append("directions", newRecipe.directions);
-                // recipeData.append("createdBy", newRecipe.createdBy);
                 recipeData.append("picture", newRecipe.picture);
                 recipeData.append("difficulty", newRecipe.difficulty);
 
@@ -298,22 +292,6 @@ function SubmitRecipe() {
                                                     <option>Advanced</option>
                                                 </select>
                                             </div>
-                                            <label for="createdBy">
-                                                Created By
-                                            </label>
-                                            <div className="createdBy mb-3">
-                                                <input
-                                                    type="text"
-                                                    id="createdBy"
-                                                    className="form-control"
-                                                    placeholder="Type Created By"
-                                                    onChange={(e) =>
-                                                        setCreatedBy(
-                                                            e.target.value
-                                                        )
-                                                    }
-                                                />
-                                            </div>
                                         </div>
                                         <div className="row justify-content-center">
                                             <div className="form-group files">
@@ -336,11 +314,11 @@ function SubmitRecipe() {
                                         <div className="row justify-content-center">
                                             <div className="col-md-12 col-lg-10 col-12">
                                                 <div className="mb-2 mt-4">
-                                                    {/* <div className="warning mb-2 text-danger">
+                                                    <div className="warning mb-2 text-danger">
                                                         {errorMessage.length >
                                                             0 &&
                                                             `* ${errorMessage}`}
-                                                    </div> */}
+                                                    </div>
                                                     <div className="text-right">
                                                         <button
                                                             type="submit"

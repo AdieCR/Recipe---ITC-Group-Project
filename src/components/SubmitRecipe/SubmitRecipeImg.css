@@ -13,9 +13,7 @@
 .SubmitRecipeImg {
     background-image: url("https://ae01.alicdn.com/kf/Hddac8797f9e746978c9ee3d7c150d6467/Food-Photography-Background-Grunge-Wall-Vegetables-Kitchen-Meat-Props-Food-Backdrops-Decoration-Wood-Board-Dark-Cement.jpg_640x640.jpg");
     background-size: cover;
-    /* height: 100%; */
     width: 100vw;
     position: absolute;
     top: 0;
-    z-index: -1;
 }
