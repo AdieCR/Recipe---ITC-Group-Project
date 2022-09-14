@@ -12,7 +12,7 @@ export default function RecipeCard({recipe}){
   }
 
 return (
-    <Card>
+    <Card className="sizeManager">
     <Card.Img variant="top" src={recipe.picture} className="imageCard" />
     <Card.Body>
       <Card.Title>{recipe.recipeTitle}</Card.Title>

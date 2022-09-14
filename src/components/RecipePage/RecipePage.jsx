@@ -98,7 +98,7 @@ const RecipePage = () => {
             
           </div>
           <div className="d-flex" >
-              <Button className="recipeBtn">Save</Button>
+              <Button className="recipeBtn" onClick={handleSaveRecipe}>Save</Button>
               <Button className="recipeBtn"onClick={() => navigate(-1)}>Back</Button>
           </div>
         <div className="RecipePageBottom">

@@ -2,3 +2,6 @@
     height: 300px;
     object-fit: fill;
 }
+.sizeManager{
+    max-height: 480px;
+}
