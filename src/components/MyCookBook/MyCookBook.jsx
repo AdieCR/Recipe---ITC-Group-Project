@@ -1,25 +1,36 @@
-import React from "react";
-// import { Container, Row, Col, Alert, Navbar } from "react-bootstrap/";
-// import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
+import React, {useEffect, useState} from "react";
+import "./MyCookBook.css";
+import RecipeList from "../RecipeList/RecipeList";
+import axios from 'axios';
+
 
 function MyCookBook() {
+    const [recipeList, setRecipeList] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+async function getUserRecipeList(){
+    const {data} = await axios.get("http://localhost:5000/recipe/user/id", {withCredentials:true});
+  
+    setRecipeList(data.savedRecipes);
+  
+    setIsLoading(false);
+}
+
+    useEffect(() => {
+        getUserRecipeList()
+    },[])
     return (
-        <div className="container mt-3">
+        <div className="container mt-5">
             <div className="mt-3 d-flex justify-content-center">
-                <span className="heading">Recipe!</span>
+                <span className="heading">My Cook Book</span>
             </div>
             <div className="d-flex justify-content-center">
-                <span className="text">Hey, nice to see you</span>
+                <span className="text">Here you can find all of your saved and added recipes</span>
             </div>
-            <div className="mt-3 d-flex justify-content-center">
-                <span className="text1">
-                    We are looking for new recipes and wants to feature YOURS on
-                    our website!
-                    <br />
-                    Got a recipe that's been passed down in the family? A new
-                    recipe you came up with?{" "}
-                </span>
-            </div>
+            {isLoading? (null): (
+                <RecipeList allRecipes={recipeList} />
+            )}
+            
         </div>
     );
 }

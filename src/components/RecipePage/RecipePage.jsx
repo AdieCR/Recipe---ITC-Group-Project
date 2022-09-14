@@ -16,6 +16,7 @@ const RecipePage = () => {
   const [fetchUserBool, setFetchUserBool] = useState(false);
   const [fetchRecipeBool, setFetchRecipeBool] = useState(false);
 
+
   const fetchRecipe = async () => {
     const { data } = await axios.get(
       `http://localhost:5000/recipe/${params.id}`,
@@ -43,6 +44,7 @@ const RecipePage = () => {
     }
   };
 
+  
   useEffect(() => {
     fetchRecipe();
   }, [params, fetchRecipeBool]);
@@ -64,7 +66,7 @@ const RecipePage = () => {
           if (res.data) setFetchUserBool((prev) => !prev);
         } else {
           const res = await axios.post(
-            `http://localhost:5000/recipe/${params.id}/save`,
+            `http://localhost:5000/recipe/${params.id}/save`,{},
             {
               withCredentials: true,
             }
@@ -98,7 +100,8 @@ const RecipePage = () => {
             
           </div>
           <div className="d-flex" >
-              <Button className="recipeBtn" onClick={handleSaveRecipe}>Save</Button>
+
+              <Button className="recipeBtn" onClick={handleSaveRecipe}>{currentUser.savedRecipes?.includes(params.id)? "Unsave": "Save"}</Button>
               <Button className="recipeBtn"onClick={() => navigate(-1)}>Back</Button>
           </div>
         <div className="RecipePageBottom">
