@@ -2,6 +2,7 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useNavigate } from 'react-router-dom';
+import './RecipeCard.css';
 
 export default function RecipeCard({recipe}){
 
@@ -12,7 +13,7 @@ export default function RecipeCard({recipe}){
 
 return (
     <Card>
-    <Card.Img variant="top" src={recipe.picture} />
+    <Card.Img variant="top" src={recipe.picture} className="imageCard" />
     <Card.Body>
       <Card.Title>{recipe.recipeTitle}</Card.Title>
       <Card.Text>

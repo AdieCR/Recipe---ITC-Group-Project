@@ -1,13 +1,15 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { Col, Container, Image, Row } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { Col, Container, Image, Row, Button } from "react-bootstrap";
+import { useParams, useNavigate} from "react-router-dom";
 import { RecipeContext } from "../Context/Context";
 import * as Icon from "react-bootstrap-icons";
+import Print from "./Print.png";
+import "./RecipePage.css"
 
 const RecipePage = () => {
   const params = useParams();
-
+  const navigate = useNavigate();
   const { currentUser, setCurrentUser, setIsLoggedIn, isLoggedIn } =
     useContext(RecipeContext);
   const [recipe, setRecipe] = useState({});
@@ -22,7 +24,7 @@ const RecipePage = () => {
       }
     );
     setRecipe(data);
-    console.log(recipe);
+   
 
     if (data) {
       const { data } = await axios.get("http://localhost:5000/recipe", {
@@ -80,47 +82,48 @@ const RecipePage = () => {
     }
   };
   return (
-    <Container className="mt-3">
-      <Row className="justify-content-center">
-        <Col lg={9} className="d-flex flex-column justify-content-center">
-          <h2>{recipe.recipeTitle}</h2>
-          <div>{recipe.description}</div>
-          <Row>
-            <Col lg={9}>
-              <Image
-                src={recipe.picture}
-                alt={recipe?.name}
-                className="rounded"
-                fluid
-              />
-            </Col>
-            <Col lg={3}>
-              <div>{recipe.category}</div>
-              <div>{recipe.totalTime}</div>
-              <div>{recipe.servings}</div>
-            </Col>
-          </Row>
-          <div>{recipe.recipeTitle}</div>
-          <div>{recipe.createdBy}</div>
-          <div>{recipe.difficulty}</div>
-          <h4>Ingredients</h4>
-          <div>
+    <div className="RecipePageContainer">
+          <h2 className="RecipeTitle">{recipe.recipeTitle}</h2>
+          <div className="Description">{recipe.description}</div>
+      <div className="RecipePageTop">
+          <img src={recipe.picture} alt="recipe" className="RecipeImage"/>
+      
+            <div className="info">
+              <div className="infoDetail"><b>Category:</b> {recipe.category}</div>
+              <div className="infoDetail"> <b>Total Time:</b> {recipe.totalTime} minutes</div>
+              <div className="infoDetail"><b>Yield:</b>{ recipe.servings} servings</div>
+              <div className="infoDetail"><b>Difficulty Level:</b> {recipe.difficulty}</div>
+              <div className="infoDetail"> <b>Added by:</b> {recipe.createdBy}</div>
+            </div>
+            
+          </div>
+          <div className="d-flex" >
+              <Button className="recipeBtn">Save</Button>
+              <Button className="recipeBtn"onClick={() => navigate(-1)}>Back</Button>
+          </div>
+        <div className="RecipePageBottom">
+        
+        
+        <div className="Bottom-Side1">
+        <h4><b>Ingredients</b></h4>
             {recipe?.ingredients?.map((ingredient, index) => (
               <div key={index} className="d-flex align-items-center gap-3">
                 <Icon.App />
-                <div>{ingredient}</div>
+                <div className="ingredient">{ingredient}</div>
               </div>
             ))}
           </div>
-          <div>
+          <div className="Bottom-Side2">
+          <h4><b>Directions</b></h4>
             {recipe?.directions?.map((direction, index) => (
-              <div key={index}>{direction}</div>
+              <div><b> Step {index+1}</b>
+              <div  className="ingredient" key={index}>{direction}</div></div>
             ))}
           </div>
-        </Col>
-      </Row>
-    </Container>
-  );
+    </div>
+    </div>
+  )
 };
 
 export default RecipePage;
+
