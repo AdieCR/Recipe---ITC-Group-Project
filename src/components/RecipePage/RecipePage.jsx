@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { Container, Image } from "react-bootstrap";
+import { Col, Container, Image, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { RecipeContext } from "../Context/Context";
+import * as Icon from "react-bootstrap-icons";
 
 const RecipePage = () => {
   const params = useParams();
@@ -79,31 +80,45 @@ const RecipePage = () => {
     }
   };
   return (
-    <Container>
-      <h4>Test to see if works. Please I (Daniel) don't want to design.</h4>
-      <Image
-        src={recipe.picture}
-        alt={recipe?.name}
-        className="rounded "
-        fluid
-      />
-      <div>{recipe.recipeTitle}</div>
-      <div>{recipe.createdBy}</div>
-      <div>{recipe.description}</div>
-      <div>{recipe.difficulty}</div>
-      <div>{recipe.servings}</div>
-      <div>{recipe.totalTime}</div>
-      <div>{recipe.category}</div>
-      <div>
-        {recipe?.ingredients?.map((ingredient) => (
-          <div>{ingredient}</div>
-        ))}
-      </div>
-      <div>
-        {recipe?.directions?.map((direction) => (
-          <div>{direction}</div>
-        ))}
-      </div>
+    <Container className="mt-3">
+      <Row className="justify-content-center">
+        <Col lg={9} className="d-flex flex-column justify-content-center">
+          <h2>{recipe.recipeTitle}</h2>
+          <div>{recipe.description}</div>
+          <Row>
+            <Col lg={9}>
+              <Image
+                src={recipe.picture}
+                alt={recipe?.name}
+                className="rounded"
+                fluid
+              />
+            </Col>
+            <Col lg={3}>
+              <div>{recipe.category}</div>
+              <div>{recipe.totalTime}</div>
+              <div>{recipe.servings}</div>
+            </Col>
+          </Row>
+          <div>{recipe.recipeTitle}</div>
+          <div>{recipe.createdBy}</div>
+          <div>{recipe.difficulty}</div>
+          <h4>Ingredients</h4>
+          <div>
+            {recipe?.ingredients?.map((ingredient, index) => (
+              <div key={index} className="d-flex align-items-center gap-3">
+                <Icon.App />
+                <div>{ingredient}</div>
+              </div>
+            ))}
+          </div>
+          <div>
+            {recipe?.directions?.map((direction, index) => (
+              <div key={index}>{direction}</div>
+            ))}
+          </div>
+        </Col>
+      </Row>
     </Container>
   );
 };
