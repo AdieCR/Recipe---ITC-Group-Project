@@ -16,6 +16,8 @@ function SearchPage({setRecipeList,recipeList}) {
 
     async function getRecipes(){
         const searchResult = await axios.get("http://localhost:5000/recipe");
+        
+        
         if (!recipeList.length){
             setAllRecipes(searchResult.data);
         }else{
@@ -42,7 +44,7 @@ function SearchPage({setRecipeList,recipeList}) {
   
       try{
           const searchResult = await axios.get("http://localhost:5000/recipe", {params: searchObj});
-          setAllRecipes(searchResult);
+          setAllRecipes(searchResult.data);
           
       }catch(e){
   

@@ -4,11 +4,11 @@ import { Row, Col } from 'react-bootstrap'
 
 function RecipeList({allRecipes}) {
   return (
-    <div>
+    <div >
        
-         <Row xs={1} md={2} lg={3} className="g-4 w-100">
+         <Row xs={1} md={2} lg={3} xl={4} className="mx-3 mb-3 mt-3 d-flex justify-content-between">
          {allRecipes?.map((recipe) => (
-                <Col key={recipe._id}>
+                <Col className="mt-3" key={recipe._id}>
                     <RecipeCard
                         recipe={recipe}
                     />

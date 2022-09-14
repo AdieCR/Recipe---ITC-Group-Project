@@ -1,7 +1,10 @@
+body, #root{
+    min-height: 100vh;
+}
 .SearchPageContainer{
-    height:100%;
     width:100%;
     margin-top: 3%;
+    min-height: 100%;
 }
 .SearchPageTopContainer{
     display: flex;
@@ -16,8 +19,9 @@ h1{
     margin-left: 10% ;
 }
 .SearchPageBottomContainer{
-    height: 70%;
     width:100%;
+    min-height: 100vh;
     display: flex;
-    background-color: #e6e4d4af;
+    background: url("./back.PNG");
+    min-height: calc(100vh - 114px);
 }

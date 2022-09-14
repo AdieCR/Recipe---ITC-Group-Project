@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import {useSearchParams} from "react-router-dom";
+import {useSearchParams, useNavigate} from "react-router-dom";
 import "./LandingPage.css";
 import Search from "./Search.png";
 import axios from "axios";
-import {Link} from "react-router-dom";
+// import {Link} from "react-router-dom";
 
 function LandingPage({setRecipeList}) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [textSearch, setTextSearch] = useState("");
   const [optionSearch, setOptionSearch] = useState("");
   const[difficulty, setDifficulty] = useState("");
+
+  const navigate = useNavigate();
 
   async function handleSearch(){
         const search = {
@@ -25,12 +27,12 @@ function LandingPage({setRecipeList}) {
 
     try{
         const searchResult = await axios.get("http://localhost:5000/recipe", {params: searchObj});
-        setRecipeList(searchResult);
+        setRecipeList(searchResult.data);
         
     }catch(e){
 
     }
-    <Link to="/searchPage"></Link>
+    navigate("/searchPage");
   }
 
   return (
@@ -46,7 +48,7 @@ function LandingPage({setRecipeList}) {
           </span>
         </div>
         <div className="d-flex justify-content-left gap-3 LandingPageSearch">
-          <input
+        <input
             className="LandingPageInput"
             placeholder="I want to make..."
             onChange={(e) => {
@@ -79,76 +81,12 @@ function LandingPage({setRecipeList}) {
             <option className="option">Advanced</option>
           </select>
 
+
           <div className="LandingBtn" onClick={handleSearch}>
             <img src={Search} alt="search" className="LandingPageSearchBtn" />
           </div>
         </div>
       </div>
-      {/* <div className="row mt-5 p-3 g-3 d-flex justify-content-center LandingPageCards">
-        <div className="col-md-4">
-          <div className="card2 p-2 py-3">
-            <div className="text-center d-flex flex-column align-items-center">
-              <div>
-                <img
-                  src="https://i.imgur.com/YzEqP6e.png"
-                  height="50px"
-                  width="50px"
-                  alt="logo"
-                />
-              </div> */}
-              {/* <span className="stellar">Stellar</span>
-              <span className="hosting">Shared Hosting</span>
-              <span className="price mt-2">
-                $ 0.99<span className="small"> /mo</span>
-              </span>
-              <span className="year">On first year</span>
-              <button className="btn btn-success mt-2">Get Started</button>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className="card2 p-2 py-3">
-            <div className="text-center d-flex flex-column align-items-center">
-              <div>
-                <img
-                  src="https://i.imgur.com/f4B2c2B.png"
-                  height="50px"
-                  width="50px"
-                  alt="avata"
-                />
-              </div> */}
-              {/* <span className="stellar">Stellar Pro</span>
-              <span className="hosting">Shared Hosting</span>
-              <span className="price mt-2">
-                $ 0.99<span className="small"> /mo</span>
-              </span>
-              <span className="year">On first year</span>
-              <button className="btn2 btn-success mt-2">Get Started</button>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className="card2 p-2 py-3">
-            <div className="text-center d-flex flex-column align-items-center">
-              <div>
-                <img
-                  src=" https://i.imgur.com/C4CUnKG.png"
-                  height="50px"
-                  width="50px"
-                  alt="logo"
-                />
-              </div>
-              <span className="stellar">Pro Business</span>
-              <span className="hosting">Shared Hosting</span>
-              <span className="price mt-2">
-                $ 0.99<span className="small"> /mo</span>
-              </span>
-              <span className="year">On first year</span>
-              <button className="btn3 btn-success mt-2">Get Started</button> */}
-            {/* </div>
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 }
