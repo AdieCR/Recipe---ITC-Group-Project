@@ -82,7 +82,7 @@ function SearchPage({setRecipeList,recipeList}) {
 
     </div>
     <div className="SearchPageBottomContainer">
-        <RecipeList/>
+        <RecipeList recipeList={recipeList} setRecipeList={setRecipeList}/>
     </div>
     </div>
   )

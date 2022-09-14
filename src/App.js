@@ -39,7 +39,7 @@ function App() {
 
   useEffect(() => {
     fetchUser();
-    console.log(isLoggedIn, "isLoggedIn");
+    
   }, []);
 
   const contextValue = {
